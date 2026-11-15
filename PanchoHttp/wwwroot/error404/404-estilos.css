@@ -1,0 +1,243 @@
+:root {
+  --mostaza: #f4b400;
+  --ketchup: #c8281e;
+  --pan: #e8b56a;
+  --carbon: #1e2a32;
+  --papel: #fffdf7;
+  --borde: #1e2a32;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: var(--carbon);
+  background:
+    repeating-linear-gradient(90deg, var(--mostaza) 0 48px, #f9c926 48px 96px);
+  min-height: 100vh;
+  padding: 2rem 1rem 4rem;
+}
+
+.carrito { max-width: 640px; margin: 0 auto; }
+
+/* Cartel */
+.cartel {
+  background: var(--ketchup);
+  color: var(--papel);
+  text-align: center;
+  padding: 1.5rem 1rem 1.25rem;
+  border: 3px solid var(--borde);
+  border-radius: 14px 14px 0 0;
+  box-shadow: 6px 6px 0 var(--borde);
+}
+.cartel h1 {
+  font-family: "Bowlby One", sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  line-height: 1;
+  margin: 0 0 .5rem;
+  letter-spacing: .01em;
+}
+.cartel p { margin: 0; font-size: 1.05rem; }
+
+/* Comanda (el formulario) */
+.comanda {
+  background: var(--papel);
+  border: 3px solid var(--borde);
+  border-top: 0;
+  box-shadow: 6px 6px 0 var(--borde);
+  padding: 1.5rem 1.25rem 1.75rem;
+  /* borde inferior tipo ticket recortado */
+  --d: 12px;
+  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--d)) 100%;
+          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50% / calc(2 * var(--d)) 100%;
+  padding-bottom: 2.5rem;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+legend {
+  font-weight: 700;
+  font-size: 1.15rem;
+  padding: 0;
+  margin-bottom: .6rem;
+}
+legend small { font-weight: 400; font-size: .85rem; opacity: .7; margin-left: .4rem; }
+
+/* Opciones como "fichas" */
+.op { position: relative; }
+.op input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+.op span {
+  display: inline-block;
+  padding: .5rem .9rem;
+  border: 2px solid var(--borde);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 500;
+  transition: background .15s, transform .15s;
+}
+.op input:hover + span { background: #fff3cf; }
+.op input:checked + span {
+  background: var(--carbon);
+  color: var(--papel);
+}
+.op input[type="checkbox"]:checked + span { background: var(--ketchup); border-color: var(--ketchup); }
+.op input:focus-visible + span { outline: 3px solid var(--mostaza); outline-offset: 2px; }
+
+/* Campos de texto */
+.fila { display: flex; gap: 1rem; flex-wrap: wrap; }
+.fila .campo:last-child { flex: 1 1 240px; }
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+.campo input, .campo textarea {
+  font: inherit;
+  font-weight: 400;
+  padding: .6rem .75rem;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--carbon);
+}
+.campo input[type="number"] { width: 6rem; }
+.campo input:focus-visible, .campo textarea:focus-visible {
+  outline: 3px solid var(--mostaza);
+  outline-offset: 1px;
+}
+
+/* Botón */
+button {
+  width: 100%;
+  font-family: "Bowlby One", sans-serif;
+  font-size: 1.25rem;
+  padding: .9rem 1rem;
+  background: var(--mostaza);
+  color: var(--carbon);
+  border: 3px solid var(--borde);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--borde);
+  cursor: pointer;
+  transition: transform .1s, box-shadow .1s;
+}
+button:hover { background: #ffc61a; }
+button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--borde); }
+button:focus-visible { outline: 3px solid var(--ketchup); outline-offset: 3px; }
+
+/* Pedido confirmado */
+.ticket {
+  margin-top: 2rem;
+  background: var(--papel);
+  border: 3px dashed var(--borde);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.ticket[hidden] { display: none; }
+.ticket h2 { font-family: "Bowlby One", sans-serif; font-weight: 400; margin: 0 0 .5rem; font-size: 1.3rem; }
+.ticket p { margin: 0; line-height: 1.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+@media (max-width: 480px) {
+  body { padding: 1rem .75rem 3rem; }
+  .comanda { padding: 1.25rem 1rem 2.25rem; }
+}
+
+/* Lista de pedidos */
+.pedidos { margin-top: 2rem; }
+button.secundario {
+  background: var(--papel);
+  font-size: 1.05rem;
+}
+button.secundario:hover { background: #fff3cf; }
+.lista {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: .75rem;
+}
+.lista[hidden] { display: none; }
+.lista li {
+  background: var(--papel);
+  border: 2px solid var(--borde);
+  border-left: 8px solid var(--ketchup);
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  line-height: 1.5;
+}
+
+/* Página 404 */
+.error { text-align: center; }
+.error .numero {
+  font-family: "Bowlby One", sans-serif;
+  font-size: clamp(4.5rem, 22vw, 8rem);
+  line-height: 1;
+  margin: 0;
+  color: var(--ketchup);
+  text-shadow: 4px 4px 0 var(--borde);
+}
+.error h2 {
+  font-family: "Bowlby One", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 1rem 0 .5rem;
+}
+.error p { line-height: 1.5; margin: 0 0 1.5rem; }
+
+.boton {
+  display: inline-block;
+  font-family: "Bowlby One", sans-serif;
+  font-size: 1.1rem;
+  padding: .8rem 1.4rem;
+  background: var(--mostaza);
+  color: var(--carbon);
+  text-decoration: none;
+  border: 3px solid var(--borde);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--borde);
+  transition: transform .1s, box-shadow .1s;
+}
+.boton:hover { background: #ffc61a; }
+.boton:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--borde); }
+.boton:focus-visible { outline: 3px solid var(--ketchup); outline-offset: 3px; }
+
+/* Pancho hecho con CSS, tirado en el piso */
+.pancho {
+  position: relative;
+  width: 200px;
+  height: 90px;
+  margin: 1.5rem auto 1rem;
+  transform: rotate(-12deg);
+}
+.pancho span { position: absolute; display: block; border: 3px solid var(--borde); }
+.pan-fondo   { inset: 28px 0 0 0; height: 44px; background: var(--pan); border-radius: 22px; }
+.salchicha   { left: -10px; right: -10px; top: 22px; height: 34px; background: #b8341f; border-radius: 17px; }
+.mostaza     { left: 20px; right: 20px; top: 33px; height: 10px; border: 0; border-radius: 5px;
+               background: repeating-linear-gradient(90deg, var(--mostaza) 0 14px, transparent 14px 22px); }
+.pan-frente  { inset: 42px 6px auto 6px; height: 36px; background: var(--pan); border-radius: 4px 4px 20px 20px; border-top: 0; }
+.pancho::after {
+  content: "";
+  position: absolute;
+  left: 10%; right: 10%; bottom: -14px;
+  height: 10px;
+  background: rgba(30, 42, 50, .18);
+  border-radius: 50%;
+  z-index: -1;
+}

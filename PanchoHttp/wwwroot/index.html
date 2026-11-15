@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panchos al paso · Armá tu pancho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="estilospanchos.css">
+</head>
+
+<body>
+  <main class="carrito">
+    <header class="cartel">
+      <h1>Panchos al paso</h1>
+      <p>Armá tu pancho como te guste.</p>
+    </header>
+
+    <form class="comanda" id="pedido">
+      <fieldset>
+        <legend>Pan</legend>
+        <label class="op"><input type="radio" name="pan" value="Pan de pancho común" checked><span>Común</span></label>
+        <label class="op"><input type="radio" name="pan" value="Pan de pancho con semillas"><span>Con
+            semillas</span></label>
+        <label class="op"><input type="radio" name="pan" value="Pan de pancho integral"><span>Integral</span></label>
+        <label class="op"><input type="radio" name="pan" value="Pan de pancho sin TACC"><span>Sin TACC</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Salchicha</legend>
+        <label class="op"><input type="radio" name="salchicha" value="Salchicha tradicional"
+            checked><span>Tradicional</span></label>
+        <label class="op"><input type="radio" name="salchicha" value="Salchicha alemana"><span>Alemana</span></label>
+        <label class="op"><input type="radio" name="salchicha" value="Salchicha de pollo"><span>De pollo</span></label>
+        <label class="op"><input type="radio" name="salchicha"
+            value="Salchicha vegetariana"><span>Vegetariana</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Aderezos <small>podés elegir varios</small></legend>
+        <label class="op"><input type="checkbox" name="aderezo" value="Mayonesa"><span>Mayonesa</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Ketchup"><span>Ketchup</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Mostaza"><span>Mostaza</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Salsa golf"><span>Salsa golf</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Barbacoa"><span>Barbacoa</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Chimichurri"><span>Chimichurri</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Cheddar"><span>Cheddar</span></label>
+        <label class="op"><input type="checkbox" name="aderezo" value="Cebolla frita"><span>Cebolla frita</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>¿Con papas?</legend>
+        <label class="op"><input type="radio" name="papas" value="con papas" checked><span>Sí</span></label>
+        <label class="op"><input type="radio" name="papas" value="sin papas"><span>No</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bebida</legend>
+        <label class="op"><input type="radio" name="bebida" value="Sin bebida" checked><span>Sin bebida</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Gaseosa cola"><span>Cola</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Gaseosa lima-limón"><span>Lima-limón</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Naranjada"><span>Naranjada</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Agua sin gas"><span>Agua sin gas</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Agua con gas"><span>Agua con gas</span></label>
+        <label class="op"><input type="radio" name="bebida" value="Cerveza"><span>Cerveza</span></label>
+      </fieldset>
+
+      <div class="fila">
+        <label class="campo">Cantidad
+          <input type="number" name="cantidad" min="1" max="20" value="1">
+        </label>
+        <label class="campo">Tu nombre
+          <input type="text" name="nombre" placeholder="Para llamarte cuando esté listo" required>
+        </label>
+      </div>
+
+      <label class="campo">Aclaraciones
+        <textarea name="nota" rows="2" placeholder="Ej: sin cebolla, bien cocida"></textarea>
+      </label>
+
+      <button type="submit">Pedir mi pancho</button>
+    </form>
+
+    <aside class="ticket" id="ticket" aria-live="polite" hidden>
+      <h2>Pedido anotado</h2>
+      <p id="resumen"></p>
+    </aside>
+
+    <section class="pedidos">
+      <button type="button" id="btnPedidos" class="secundario">Ver pedidos</button>
+      <ul id="listaPedidos" class="lista" hidden></ul>
+    </section>
+  </main>
+
+  <script>
+
+  </script>
+</body>
+<script src="script.js"></script>
+</html>
