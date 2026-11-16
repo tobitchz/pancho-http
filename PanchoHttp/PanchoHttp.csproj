@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-  <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="wwwroot/**/*" CopyToOutputDirectory="PreserveNewest" />
 </ItemGroup>
 </Project>
